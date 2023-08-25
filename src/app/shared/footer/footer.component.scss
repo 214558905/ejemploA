@@ -1,0 +1,19 @@
+$color-azulUnibe: #00498C;
+$color-amarilloUnibe: #f4c200;
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    color: #102c54;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content span {
+    font-size: 14px;
+    color: #999999;
+}

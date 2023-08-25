@@ -1,0 +1,85 @@
+<p-toast></p-toast>
+<div class="background">
+  <div class="porposals">
+      <div class="titleP font">
+          <span >Mis Propuestas</span>
+      </div>
+      <div class="backgroundTF">
+          <div class="filters">
+            <div class="searchButton" fxLayoutAlign="end" >
+              <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                  <input type="text" pInputText 
+                  placeholder="Buscar Propuesta"
+                  name="searchText" [(ngModel)]="searchText"
+                  />
+                </span>
+            </div>
+          </div>
+          <div class="tableProposals">
+              <p-table 
+              [paginator]="true"
+              [rows]="5"
+              [rowsPerPageOptions]="[5, 10, 20]"
+              [value]="proposals | filterPorposals: searchText">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Nombre del Evento</th>
+                      <th>Fecha de Presentacion</th>
+                      <th>Tipo de Evento</th>
+                      <th>Propuesta</th>
+                      <th>Esquema Curricular</th>
+                      <th>Estado</th>
+                      <th style="width: 10%"></th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-porposal>
+                    <tr>
+                      <td> {{porposal.nameEvent}} </td>
+                      <td> {{obtenerFecha(porposal.datePresentation)}} </td>
+                      <td> {{porposal.evento.name}} </td>
+                      
+                      <td> <a class="iconoPDF" *ngIf="porposal.FilePorposal" [href]="porposal.FilePorposal.linkFile"><i class="fa-solid fa-file-pdf fa-xl"></i></a> </td>
+                      <td> <a class="iconoPDF" *ngIf="porposal.FileEsquema" [href]="porposal.FileEsquema.linkFile"><i class="fa-solid fa-file-pdf fa-xl"></i></a> </td>
+                      <td> <p-tag [severity]="getStatusPorposal(porposal.state)">{{porposal.state}}</p-tag> </td>
+                      <td>
+                        
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="iconsActions">
+                        <i *ngIf="porposal.state==='Rechazado'" class="fa-sharp fa-solid fa-comment fa-xl" (click)="showDialog('right',porposal)"></i>
+                        <i *ngIf="porposal.state==='Rechazado'"class="fa-solid fa-pen-to-square fa-xl" (click)="editar(porposal.porposalId)"></i>
+                        <i *ngIf="porposal.state==='Rechazado'" (click)="openConfirmDialog(porposal)" class="fa-solid fa-trash fa-xl"></i>
+                        <i (click)="duplicar(porposal.porposalId)" *ngIf="porposal.state==='Aprobado'" class="fa-solid fa-copy fa-xl"></i>
+                        </div>
+                        
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+          </div>
+      </div>
+      
+  </div>
+</div>
+
+<p-dialog header="Propuesta Rechazada" [(visible)]="visible" [position]="position" [style]="{width: '50vw'}">
+<span *ngIf="actualPorposal">
+  {{actualPorposal.comment}}
+</span>
+
+</p-dialog>
+
+<p-dialog  *ngIf="actualPorposalDe"  [(visible)]="confirmModal" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  
+  <div class="iconDelete"  fxLayoutAlign="center center" fxLayout="column">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span>¿Estas seguro de Eliminar la propuesta {{actualPorposalDe.nameEvent}}?</span>
+  </div>
+ 
+  <ng-template pTemplate="footer" >
+    <div fxLayoutAlign="center center">
+      <button style="width: 13vh;" (click)="deletePorposal()" class="my-button">Si</button>
+      <button style="width: 13vh;" (click)="onHide()"  class="my-button">No</button>
+    </div>
+    
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,126 @@
+//constantes
+$color-azulUnibe: #00498c;
+$color-amarilloUnibe: #f4c200;
+.fondo{
+    height: 100vh;
+}
+.user {
+    padding-bottom: 2vh;
+}
+
+.contLogin {
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+
+
+//#037596
+.registrarse {
+    font-size: 4vh;
+    padding-bottom: 4vh;
+}
+
+.inputLabel {
+    width: 2vh;
+}
+
+.login {
+    height: auto;
+    border: 0.3125vh solid $color-azulUnibe;
+    outline: 0.3125vh solid $color-amarilloUnibe;
+
+    outline-offset: 1.5vh;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 2vh;
+    width: 55vh;
+}
+
+.logo {
+    img {
+        max-width: 260px;
+        height: auto;
+    }
+
+    padding-bottom: 4vh;
+
+}
+
+
+
+.my-button:hover {
+    background-color: #00264D;
+    color: $color-amarilloUnibe
+}
+
+.inputLabel {
+    font-family: Arial;
+}
+
+.footer {
+    background-color: $color-azulUnibe;
+}
+
+.messageError {
+    color: red;
+    font-size: 17px;
+    margin-top: 5px;
+}
+
+.alert {
+    text-align: center;
+    font-family: Arial;
+}
+
+.tituloIniciarS {
+    font-size: 5vh;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .login {
+        box-sizing: border-box;
+        width: 60vh;
+    }
+
+}
+
+@media (min-width: 1580px) {
+    .login {
+        box-sizing: border-box;
+        width: 70vh;
+    }
+}
+
+@media (max-width: 767px) {
+    .login {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+        img {
+            display: none;
+        }
+
+        padding-bottom: 1vh;
+
+    }
+
+    .titleLogin {
+        margin-bottom: 5vh;
+    }
+
+
+}
+
+.recuperarPassword a {
+    text-decoration: none;
+    color: #ffb622;
+    transition: color .5s ease-in-out;
+
+
+}
+.recuperarPassword a:hover{
+    color:#00264D
+}

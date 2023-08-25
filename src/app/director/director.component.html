@@ -1,0 +1,132 @@
+<div class="fondo" fxLayout="column">
+  <div class="menu" fxLayoutAlign="end center">
+    <div class="user-dropdown">
+      <div class="user-icon" fxLayoutAlign="center center">
+        <i class="pi pi-user" style="font-size: 2rem"></i>
+      </div>
+      <div class="user-menu">
+        <ul>
+          <li><a href="#">Mi perfil</a></li>
+          <li><a href="#">Configuración</a></li>
+          <li><a href="#" (click)="onLogout()">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="creaEventos"></div>
+  <div class="fondoEven" fxLayout="row">
+    <div class="sideMenu" fxFlex="30%"></div>
+    <div class="misEventos" fxFlex="67%">
+      <div class="cabezeraEventos" fxLayoutAlign="space-between center">
+        <div class="tituloEventos">
+          <span>Mis Eventos</span>
+        </div>
+        <div class="accionesEventos" fxLayout="row" fxLayoutAlign="end" >
+          <div class="crearEvento">
+            <p-button icon="pi pi-plus"  styleClass="p-button-rounded p-button-success" (click)="showDialog(eventoNuevo)"></p-button>
+          </div>
+          <div class="filtrarEvento">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                  <i class="pi pi-search"></i>
+              </span>
+              <input pInputText placeholder="Buscar" />
+           </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      <p-table [value]="eventos" [paginator]="true"  [rowsPerPageOptions]="[5, 10, 15]" [rows]="5">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha de Propuesta</th>
+            <th>Fecha de Inicio</th>
+            <th>Impartido por</th>
+            <th>Archivo</th>
+            <th>Estado</th>
+            
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-evento>
+          <tr>
+            <td>{{ evento.nombre }}</td>
+            <td>{{ evento.tipo }}</td>
+            <td>{{ evento.fecha }}</td>
+            <td>
+              <p-button icon="pi pi-file-word"></p-button>
+            </td>
+            <td>
+              <p-tag
+                [value]="evento.estado"
+                [severity]="getColorTag(evento.estado)"
+                class="tagEstado"
+              ></p-tag>
+            </td>
+            <td>
+              <div fxLayoutAlign="space-between center">
+                <p-button *ngIf="!getEstadoBoton(evento.estado)" 
+                icon="pi pi-pencil"
+                styleClass="p-button-secondary"
+                (click)="showDialog(evento)"
+              ></p-button>
+              <p-button *ngIf="getEstadoBoton(evento.estado)"
+              icon="pi pi-copy"
+              styleClass="p-button-secondary"
+            ></p-button>
+              </div>
+              
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<p-dialog
+  [(visible)]="dialogVisible"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw', height: '70vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  header="Evento"
+>
+
+  <div class="fondoEditar" fxLayoutAlign="center">
+    <div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <label for="" >Nombre del Evento</label>
+            <input fxFlex="30vw" class="inputEvent" type="text" pInputText [value]="eventoAc.nombre" />
+        </div>
+        <div fxLayout="row"fxLayoutAlign="space-between center" class="separamiento">
+          <label for="" >Nombre del docente/s</label>
+          <input fxFlex="30vw" class="inputEvent" type="text" pInputText [value]="eventoAc.nombre" />
+       </div>
+        <div fxLayout="row" class="fechaTipo separamiento" fxLayoutAlign="space-between center">
+           <div fxLayout="column">
+            <label for="">Tipo de Evento</label>
+            <p-dropdown [options]="tipoEventos" optionLabel="name" placeholder="Seleccionar"></p-dropdown>
+           </div>
+           <div fxLayout="column" fxFlexAlign="end">
+            <label for="">Fecha</label>
+            <p-calendar appendTo="body" [showIcon]="true"></p-calendar>
+           </div>
+        </div>
+      <div fxLayout="row" class="separamiento"fxLayoutAlign="space-between center">
+          <label for="" fxLayoutAlign="center center">Archivo Propuesta</label>
+          <input type="file">
+      </div>
+        
+        <div fxLayoutAlign="end" class="enviarBoton"> 
+            <button pButton pRipple label="Enviar" class="p-button-success"></button>
+        </div>
+        
+    </div>
+  </div>
+</p-dialog>
+
+

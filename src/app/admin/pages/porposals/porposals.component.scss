@@ -1,0 +1,77 @@
+$color-azulUnibe: #00498c;
+$color-amarilloUnibe: #f4c200;
+$colo_azulOscuro:#102043;
+.fondo{
+    margin: 5vh;
+}
+.iconoPDF  {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.iconoPDF:hover  {
+    color: #b30b00;
+}
+.iconsActions i{
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.iconsActions i:hover{
+    color: $color-amarilloUnibe
+}
+.filters{
+    height: auto;
+    margin: 4vh 4vh 4vh 0vh;
+}
+.pdfModal{
+    //border: 1px solid black;
+    padding: 4px;
+    width: 30%;
+}
+.pdfModal a img{
+    max-width: 100px;
+}
+.centerFile{
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+//--------------
+.reportePdf {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+  }
+  
+  .reportePdf  th {
+    border: 1px solid black;
+    padding: 4px;
+    text-align: center;
+  }
+  .reportePdf td {
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+  }
+.generar{
+    max-width: 15cm;
+    font-size: 7px;
+    margin-left: -20px;
+}
+.titleC{
+    font-size: 10px;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    text-align: justify;
+    
+}
+.pdfI{
+    color: #aa0a00;
+}
+.excelI{
+    color: #006b36;
+}

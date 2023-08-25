@@ -1,0 +1,192 @@
+$color-azulUnibe: #00498c;
+$color-amarilloUnibe: #f4c200;
+$colo_azulOscuro:#102043;
+.deleteH{
+    cursor: pointer; 
+    color: rgba(255, 0, 0, 0.717);
+}
+.col-md-6{
+    padding: 1vh;
+}
+
+.helvetica{
+    font-family: Helvetica;
+}
+.participante{
+    padding: 2vh;
+}
+.deleteP{
+    padding-top: 3vh;
+}
+.add-button{
+    height: 8.5vh;
+}
+/* .my-button:hover {
+    background-color: #00264D;
+    color:$color-amarilloUnibe
+} */
+//------------------------
+.logo img{
+    width: 100px;
+}
+.logo {
+    padding: 0;
+    padding-left: 50px;
+}
+.Unib{
+    color:$colo_azulOscuro;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+}
+.headerTitle{
+    width: 13cm;
+}
+.encabezado{
+    width: 21cm;
+    padding: 0;
+    margin: 0;
+}
+.subtitle{
+    color:$color-amarilloUnibe
+}
+.content{ 
+    width: 14cm;
+    text-align: justify;
+    padding-right: 3.5cm;
+    font-family: Arial ;
+    font-size: 12px;
+}
+
+.titP{
+ width: 9.2cm;
+ .nameP{
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.DatosP{
+    margin-top: 10px;
+    font-size: 11px;
+}
+.bold{
+    font-weight: bold;
+}
+.normalL{
+    font-weight: normal;
+}
+.nombreE{
+    margin-left: 10px;
+    font-size: 9px;
+}
+.fecha{
+    margin-top: 3px;
+}
+.marginT{
+    margin-top: 10px;
+}
+.content table{
+    width: 86%;
+}
+.content td{
+    padding: 5px;
+}
+.content th{
+    padding: 5px;
+}
+.margenP{
+    margin-top: 3px;
+}
+.texto{
+    margin-top: 10px;
+    font-size: 9px;
+    margin-right: 1.5cm;  
+}
+.fontTitle{
+    font-size: 11px;
+}
+.content ul {
+    list-style-type: disc;
+}
+.listaM{
+    padding-left: 15px;
+}
+.detalleE{
+    margin-left: 2px;
+    font-weight: normal;
+}
+.textoA{
+    font-size: 9px;  
+    padding-top: 10px;
+}
+.firma img{
+    max-width: 70px;
+}
+.hidden {
+    display: none;
+}
+.botonInvalido{
+    background-color: $colo_azulOscuro; 
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+//-----------------------Esquema 
+.paddingTextLeft{
+    padding-left: 3px ;
+}
+.paddingTextTop{
+    padding-top: 5px;
+}
+.boldTE{
+    font-weight: bolder;
+    font-size: 11px;
+    
+}
+.boldE{
+    font-weight: bolder;
+    font-size: 10px;
+}
+.normalE{
+    font-weight: normal;
+    font-size: 9.5px;
+}
+
+.esquemaC{
+    width: 9.5cm;
+    text-align: justify;
+    font-family: Arial ;
+    font-size: 12px;
+}
+
+.contentE{
+    padding-top: 5px;
+    padding-left: 15px;
+    font-size: 11.5px;
+    width: 9cm;
+}
+.esquemaC td, th{
+    padding: 5px;
+}
+.my-button-yellow{
+    background-color: $color-amarilloUnibe;
+    transition: color 0.5s ease;
+}
+.my-button-yellow:hover{
+    background-color: $color-amarilloUnibe;
+    color: $colo_azulOscuro;
+}
+.spinner{
+    padding-left: 2vh;
+}
+.iconOk i{
+    color: green;
+    font-size: 7vh;
+}
+.confirmaEnvio{
+    padding-right: 2vh;
+    font-size: 18px;
+}
+.invalido{
+    color: red;
+}

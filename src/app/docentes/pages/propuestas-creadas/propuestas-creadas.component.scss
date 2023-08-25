@@ -1,0 +1,46 @@
+$color-azulUnibe: #00498c;
+$color-amarilloUnibe: #f4c200;
+$colo_azulOscuro:#102043;
+.background{
+    height: auto;
+    margin: 6vh 4vh 4vh 4vh;
+}
+.titleP{
+    font-size: 4vh;
+    font-weight: 600;
+}
+.font{
+    font-family: Helvetica;
+}
+.backgroundTF{
+    margin-top: 6vh;
+}
+.iconoPDF  {
+    text-decoration: none;
+    color: #d60001;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.iconoPDF:hover  {
+    color: #b30b00;
+}
+.iconsActions i{
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.iconsActions i:hover{
+    color: $color-amarilloUnibe
+}
+.filters{
+    height: 10vh;
+}
+.iconDelete{ 
+    i{
+    color: orange;
+    font-size: 50px;
+    }
+    span{
+        font-size: larger;
+    }
+}

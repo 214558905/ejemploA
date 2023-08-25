@@ -1,0 +1,98 @@
+$color-azulUnibe: #00498c;
+$color-amarilloUnibe: #f4c200;
+$colo_azulOscuro: #102043;
+.logo img{
+    width: 100px;
+}
+.logo {
+    padding: 0;
+    padding-left: 50px;
+}
+.Unib{
+    color:$colo_azulOscuro;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+}
+.headerTitle{
+    width: 13cm;
+}
+.encabezado{
+    width: 21cm;
+    padding: 0;
+    margin: 0;
+}
+.subtitle{
+    color:$color-amarilloUnibe
+}
+.content{
+    width: 14cm;
+    text-align: justify;
+    padding-right: 3.5cm;
+    font-family: Arial ;
+    font-size: 12px;
+}
+
+.titP{
+ width: 9.2cm;
+ .nameP{
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.DatosP{
+    margin-top: 20px;
+    font-size: 11px;
+}
+.bold{
+    font-weight: bold;
+}
+.normalL{
+    font-weight: normal;
+}
+.nombreE{
+    margin-left: 10px;
+    font-size: 9px;
+}
+.fecha{
+    margin-top: 3px;
+}
+.marginT{
+    margin-top: 10px;
+}
+.content table{
+    width: 86%;
+}
+.content td{
+    padding: 5px;
+}
+.content th{
+    padding: 5px;
+}
+.margenP{
+    margin-top: 3px;
+}
+.texto{
+    margin-top: 10px;
+    font-size: 9px;    
+}
+.fontTitle{
+    font-size: 11px;
+}
+.content ul {
+    list-style-type: disc;
+}
+.listaM{
+    padding-left: 15px;
+}
+.detalleE{
+    margin-left: 2px;
+    font-weight: normal;
+}
+.textoA{
+    font-size: 9px;  
+    padding-top: 10px;
+}
+.firma img{
+    max-width: 70px;
+}

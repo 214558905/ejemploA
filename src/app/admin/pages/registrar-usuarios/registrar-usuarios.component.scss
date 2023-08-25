@@ -1,0 +1,66 @@
+$color-azulUnibe: #00498C;
+$color-amarilloUnibe: #f4c200;
+.titleEn{
+    height: 15vh; 
+    font-family: Helvetica;
+}
+.fondo{
+    margin: 5vh;
+}
+.ususariosC{
+    margin-top: -5vh;
+    margin-bottom: 3vh;
+}
+
+.roles{
+    padding-top: 0;
+    .label{
+        
+        label{
+           
+            padding-top: 0.4vh;
+            padding-right:1vh ;
+            margin-left: 0.5vh; 
+        }
+    
+    }
+}
+.deleteIcon{
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.deleteIcon:hover{
+    color: red;
+}
+.inputInvalido{
+    font-family: Arial;
+    color: red;
+    opacity: 0.5;
+}
+.botonInvalido{
+    background-color: $color-azulUnibe; 
+    opacity: 0.8;
+    pointer-events: none;
+}
+.spinner{
+    padding-left: 2vh;
+}
+.editIcon{
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.editIcon:hover{
+    color: $color-azulUnibe;
+}
+.contentTable{
+     font-family: Arial;
+}
+:host ::ng-deep .colorEncabezado {
+    background: red !important;
+}
+.nav-tabs a{
+    color: $color-azulUnibe;
+}
+.nav-tabs a:hover{
+    color: $color-amarilloUnibe;
+}

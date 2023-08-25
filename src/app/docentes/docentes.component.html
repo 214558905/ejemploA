@@ -1,0 +1,6 @@
+<app-side-bar (valorEnviado)="recibirValor($event)"></app-side-bar>
+
+<div  [ngClass]="{'cuerpo': valorRecibido, 'cuerpo-expanded': !valorRecibido}" div fxLayout="column" fxLayoutAlign="space-between">
+    <router-outlet></router-outlet>
+</div>
+

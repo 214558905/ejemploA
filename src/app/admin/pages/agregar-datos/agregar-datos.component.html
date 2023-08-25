@@ -1,0 +1,294 @@
+<p-toast></p-toast>
+<div class="fondo">
+  <div class="tabs">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#facultades"
+          >Facultades</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#carreras">Carreras</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#eventos">Eventos</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="facultades">
+        <div class="table" style="width: 100%" fxLayoutAlign="center">
+          <div style="width: 100%; padding: 5vh">
+            <p-table
+              #dt
+              [value]="faculties"
+              [showCurrentPageReport]="true"
+              [paginator]="true"
+              [rows]="5"
+              [rowsPerPageOptions]="[5, 10, 20]"
+              currentPageReportTemplate="Mostrando {last} de {totalRecords} Carreras"
+              [globalFilterFields]="['name']"
+            >
+            <ng-template pTemplate="caption">
+                <div fxLayout="row" fxLayoutAlign="space-between center " >
+                    <div>
+                        <div class="addCareer" (click)="openDialogFaculty('Nueva Facultad')" >
+                            <i class="fa-solid fa-circle-plus fa-xl"></i>
+                        </div>    
+                    </div>
+                    <div class="flex" >
+                      <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input
+                          pInputText
+                          type="text"
+                          placeholder="Buscar Facultad"
+                          (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                        />
+                      </span>
+                    </div>
+                </div>
+                
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 15%">#</th>
+                  <th>Nombre</th>
+                  <th style="width: 10%"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+                <tr>
+                  <td>{{ rowIndex + 1 }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <div class="icons">
+                      <i (click)="openDialogFaculty('Editar Facultad',item)" class="fa-solid fa-pen-to-square fa-xl"></i>
+                    </div>
+                   
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="carreras">
+        <div class="table" style="width: 100%" fxLayoutAlign="center">
+          <div style="width: 100%; padding: 5vh">
+            <p-table
+              #dt
+              [value]="careers"
+              [showCurrentPageReport]="true"
+              [paginator]="true"
+              [rows]="5"
+              [rowsPerPageOptions]="[5, 10, 20]"
+              currentPageReportTemplate="Mostrando {last} de {totalRecords} Carreras"
+              [globalFilterFields]="['name']"
+            >
+            <ng-template pTemplate="caption">
+                <div fxLayout="row" fxLayoutAlign="space-between center " >
+                    <div>
+                        <div class="addCareer" (click)="openDialogCareer('Nueva Carrera')" >
+                            <i class="fa-solid fa-circle-plus fa-xl"></i>
+                        </div>    
+                    </div>
+                    <div class="flex" >
+                      <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input
+                          pInputText
+                          type="text"
+                          placeholder="Buscar Usuario"
+                          (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                        />
+                      </span>
+                    </div>
+                </div>
+                
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 15%">#</th>
+                  <th>Nombre</th>
+                  <th style="width: 10%"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+                <tr>
+                  <td>{{ rowIndex + 1 }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <div class="icons">
+                      <i (click)="openDialogCareer('Editar Carrera',item)" class="fa-solid fa-pen-to-square fa-xl"></i>
+                    </div>
+                   
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="eventos">
+        <div style="width: 100%; padding: 5vh">
+          <p-table
+            #dt
+            [value]="events"
+            [showCurrentPageReport]="true"
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            currentPageReportTemplate="Mostrando {last} de {totalRecords} Eventos"
+            [globalFilterFields]="['name']"
+          >
+          <ng-template pTemplate="caption">
+              <div fxLayout="row" fxLayoutAlign="space-between center " >
+                  <div>
+                      <div class="addCareer" (click)="openDialogE('Nuevo Evento')" >
+                          <i class="fa-solid fa-circle-plus fa-xl"></i>
+                      </div>    
+                  </div>
+                  <div class="flex" >
+                    <span class="p-input-icon-left ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input
+                        pInputText
+                        type="text"
+                        placeholder="Buscar Facultad"
+                        (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                      />
+                    </span>
+                  </div>
+              </div>
+              
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 15%">#</th>
+                <th>Nombre</th>
+                <th style="width: 10%"></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+              <tr>
+                <td>{{ rowIndex + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>
+                  <div class="icons">
+                    <i (click)="openDialogE('Editar Evento',item)" class="fa-solid fa-pen-to-square fa-xl"></i>
+                  </div>
+                 
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog [(visible)]="displayDialog"[modal]="true"
+[style]="{ width: '50vw', height: '20vw' }"
+[draggable]="false"
+[resizable]="false">
+<ng-template pTemplate="header">
+  <span class="helvetica" style="font-size: 20px;">{{tipoEventC}}</span>
+</ng-template>
+  <form #myForm="ngForm">
+    <div class="form-group" fxLayout="column">
+      <label for="name">Nombre de la Carrera</label>
+      <input pInputText type="text" id="name" name="name" #name="ngModel" [(ngModel)]="nombreCarrera" 
+      [ngClass]="
+        validoForm && myForm.controls['name'].invalid
+        ? 'ng-dirty ng-invalid'
+        : ''
+      "
+      required>
+      <small
+      *ngIf="validoForm && myForm.controls['name'].invalid"
+    >
+      <span class="inputInvalido">Este campo es requerido</span>
+    </small>
+    </div>
+
+
+  </form>
+  <ng-template pTemplate="footer">
+    <div>
+      <button style="width: 17vh;" class="my-button" (click)="guardar(myForm)">Guardar</button>
+      <button style="width: 17vh;" class="my-button" (click)="onHide()">Cerrar</button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<p-dialog [(visible)]="dialogF"[modal]="true"
+[style]="{ width: '50vw', height: '20vw' }"
+[draggable]="false"
+[resizable]="false">
+<ng-template pTemplate="header">
+  <span class="helvetica" style="font-size: 20px;">{{tipoEventC}}</span>
+</ng-template>
+  <form #myFormF="ngForm">
+    <div class="form-group" fxLayout="column">
+      <label for="name">Nombre de la Facultad</label>
+      <input pInputText type="text" id="name" name="name" #name="ngModel" [(ngModel)]="nombreFaculty" 
+      [ngClass]="
+        validoForm && myFormF .controls['name'].invalid
+        ? 'ng-dirty ng-invalid'
+        : ''
+      "
+      required>
+      <small
+      *ngIf="validoForm && myForm.controls['name'].invalid"
+    >
+      <span class="inputInvalido">Este campo es requerido</span>
+    </small>
+    </div>
+
+
+  </form>
+  <ng-template pTemplate="footer">
+    <div>
+      <button style="width: 17vh;" class="my-button" (click)="guardarFaculty(myFormF)">Guardar</button>
+      <button style="width: 17vh;" class="my-button" (click)="onHide()">Cerrar</button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="dialogE"[modal]="true"
+[style]="{ width: '50vw', height: '20vw' }"
+[draggable]="false"
+[resizable]="false">
+<ng-template pTemplate="header">
+  <span class="helvetica" style="font-size: 20px;">{{tipoEventC}}</span>
+</ng-template>
+  <form #myFormE="ngForm">
+    <div class="form-group" fxLayout="column">
+      <label for="name">Nombre del Evento</label>
+      <input pInputText type="text" id="name" name="name" #name="ngModel" [(ngModel)]="nombreEvent" 
+      [ngClass]="
+        validoForm && myFormE .controls['name'].invalid
+        ? 'ng-dirty ng-invalid'
+        : ''
+      "
+      required>
+      <small
+      *ngIf="validoForm && myFormE.controls['name'].invalid"
+    >
+      <span class="inputInvalido">Este campo es requerido</span>
+    </small>
+    </div>
+
+
+  </form>
+  <ng-template pTemplate="footer">
+    <div>
+      <button style="width: 17vh;" class="my-button" (click)="guardarEvent(myFormE)">Guardar</button>
+      <button style="width: 17vh;" class="my-button" (click)="onHide()">Cerrar</button>
+    </div>
+  </ng-template>
+</p-dialog>

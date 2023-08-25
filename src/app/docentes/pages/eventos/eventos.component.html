@@ -1,0 +1,1238 @@
+<p-toast></p-toast>
+
+<p-tabView styleClass="tabview-custom">
+  <p-tabPanel [style]="{'border-color:hover': 'red'}">
+    <ng-template pTemplate="header" >
+      <span [ngClass]="
+      valido && formP.invalid? 'invalido' : ''
+      " >Datos del Evento</span>
+    </ng-template>
+    <form #formP="ngForm">
+      <div class="row">
+        <div class="col-md-6" fxLayout="column">
+          <div fxLayout="column">
+            <label for="nameE">Nombre del Evento</label>
+            <input
+              pInputText
+              id="nameE"
+              placeholder="Nombre del Evento"
+              name="nameE"
+              #nameE="ngModel"
+              [(ngModel)]="proposal.nameEvent"
+              [ngClass]="
+                valido && formP.controls['nameE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              [required]="true"
+            />
+          </div>
+          <small *ngIf="valido && formP.controls['nameE'].invalid">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-6" fxLayout="column">
+          <div fxLayout="column">
+            <label for="tEvento">Titulo del Evento</label>
+            <input
+              pInputText
+              id="tEvento"
+              placeholder="Titulo"
+              name="titleE"
+              #titleE="ngModel"
+              [(ngModel)]="proposal.titleEvent"
+              [ngClass]="
+              valido && formP.controls['titleE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              [required]="true"
+            />
+          </div>
+          <small *ngIf=" valido && formP.controls['titleE'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+      </div>
+      <div class="row" style="margin-left: -20px">
+        <div class="col-md-2">
+          <span class="" fxLayout="column">
+            <label>Tipo de Evento</label>
+            <p-dropdown
+              [options]="events"
+              optionLabel="name"
+              name="event"
+              [showClear]="true"
+              filterBy="name"
+              [showClear]="true"
+              placeholder="Seleccione una"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="40"
+              [style]="{ width: '26vh' }"
+              #event="ngModel"
+              [ngClass]="
+              valido && formP.controls['event'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              [(ngModel)]="selectedEvent"
+              [required]="true"
+            >
+            </p-dropdown>
+            <small *ngIf=" valido && formP.controls['event'].invalid? 'ng-dirty ng-invalid' : '' ">
+              <label class="inputInvalido">
+                Este campo no puede estar vacio</label
+              >
+            </small>
+          </span>
+        </div>
+        <div class="col-md-2" fxLayout="column">
+          <label for="date">Fecha de Inicio </label>
+          <p-calendar
+            [showClear]="true"
+            name="dateIE"
+            #dateIE="ngModel"
+            [(ngModel)]="dateI"
+            [ngClass]="
+            valido && formP.controls['dateIE'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            [required]="true"
+          ></p-calendar>
+          <small *ngIf=" valido && formP.controls['dateIE'].invalid? 'ng-dirty ng-invalid' : '' ">
+            <label class="inputInvalido">
+              Este campo no puede estar vacio</label
+            >
+          </small>
+        </div>
+        <div class="col-md-2" fxLayout="column">
+          <label for="date">Fecha de Fin </label>
+          <p-calendar
+            [showClear]="true"
+            name="actualDate"
+            #actualDate="ngModel"
+            [(ngModel)]="dateF"
+            [ngClass]="
+            valido && formP.controls['actualDate'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            [required]="true"
+          ></p-calendar>
+          <small *ngIf=" valido && formP.controls['actualDate'].invalid? 'ng-dirty ng-invalid' : '' ">
+            <label class="inputInvalido">
+              Este campo no puede estar vacio</label
+            >
+          </small>
+        </div>
+
+        <div class="col-md-3">
+          <span class="" fxLayout="column">
+            <label>Carrera</label>
+            <p-dropdown
+              [options]="careers"
+              optionLabel="name"
+              name="carrera"
+              [showClear]="true"
+              [showClear]="true"
+              placeholder="Seleccione una"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="40"
+              [style]="{ width: '30vh' }"
+              [ngClass]="
+              valido && formP.controls['carrera'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              #carrera="ngModel"
+              [(ngModel)]="selectedCareer"
+              [required]="true"
+            >
+            </p-dropdown>
+            <small *ngIf="valido && formP.controls['carrera'].invalid">
+              <label class="inputInvalido">
+                Este campo no puede estar vacio</label
+              >
+            </small>
+          </span>
+        </div>
+        <div class="col-md-3">
+          <span class="" fxLayout="column">
+            <label>Facultad</label>
+            <p-dropdown
+              [options]="faculties"
+              optionLabel="name"
+              name="faculty"
+              [showClear]="true"
+              [showClear]="true"
+              placeholder="Seleccione una"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="40"
+              [style]="{ width: '30vh' }"
+              #faculty="ngModel"
+              [ngClass]="
+              valido && formP.controls['faculty'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              [(ngModel)]="selectedFaculty"
+              [required]="true"
+            >
+            </p-dropdown>
+            <small *ngIf=" valido && formP.controls['faculty'].invalid">
+              <label class="inputInvalido">
+                Este campo no puede estar vacio</label
+              >
+            </small>
+          </span>
+        </div>
+        <!-- <div class="col-md-3 " fxLayout="column">
+                    <label >Fecha de Realización</label>
+                    <p-calendar [(ngModel)]="date"></p-calendar>
+                </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-6" fxLayout="column">
+          <label for="enlaceZ">Enlace Zoom</label>
+          <input
+            pInputText
+            id="enlaceZ"
+            placeholder="Opcional"
+            name="enlaceZ"
+            #enlaceZ="ngModel"
+            [(ngModel)]="proposal.linkZoom"
+          />
+        </div>
+        <div class="col-md-6" fxLayout="column">
+          <label for="institucion">Institución</label>
+          <input
+            pInputText
+            id="institucion"
+            name="institucion"
+            #institucion="ngModel"
+            [(ngModel)]="proposal.institution"
+            placeholder="Institución"
+            [ngClass]="
+              valido && formP.controls['institucion'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+            required
+          />
+          <small
+            *ngIf="valido && formP.controls['institucion'].invalid"
+          >
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+      </div>
+      <div style="margin-left: -10px; margin-top: 10px">
+        <h5 class="">Localización Geografica</h5>
+        <div class="row">
+          <div class="col-md-4" fxLayout="column">
+            <label for="provincia">Provincia</label>
+            <input
+              pInputText
+              id="provincia"
+              placeholder="Provincia"
+              name="provincia"
+              #provincia="ngModel"
+              [(ngModel)]="proposal.provincia"
+              [ngClass]="
+              valido && formP.controls['provincia'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            />
+            <small *ngIf="valido && formP.controls['provincia'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <label for="canton">Canton</label>
+            <input
+              pInputText
+              id="canton"
+              placeholder="Canton"
+              name="canton"
+              #canton="ngModel"
+              [(ngModel)]="proposal.canton"
+              [ngClass]="
+              valido && formP.controls['canton'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            />
+            <small *ngIf="valido && formP.controls['canton'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <label for="sector">Sector</label>
+            <input
+              pInputText
+              id="sector"
+              placeholder="Sector"
+              name="sector"
+              #sector="ngModel"
+              [(ngModel)]="proposal.sector"
+              [ngClass]="
+              valido && formP.controls['sector'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            />
+            <small *ngIf="valido && formP.controls['sector'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+  </p-tabPanel>
+
+  <p-tabPanel header="Header II">
+    <ng-template pTemplate="header">
+      <span>Participantes del Evento</span>
+    </ng-template>
+    <form #pEvento="ngForm">
+      <div class="participante row">
+        <div class="col-md-3 participante" fxLayout="column">
+          <label for="nombreP">Nombre</label>
+          <input
+            pInputText
+            id="nombreP"
+            placeholder="Nombre"
+            name="nombreP"
+            #nombreP="ngModel"
+            [(ngModel)]="participant.name"
+          />
+        </div>
+        <div class="col-md-3 participante" fxLayout="column">
+          <label for="cargoP">Cargo en el Evento</label>
+          <input
+            pInputText
+            id="cargoP"
+            placeholder="Cargo"
+            name="cargoP"
+            #cargoP="ngModel"
+            [(ngModel)]="participant.position"
+          />
+        </div>
+        <div class="col-md-3 participante" fxLayout="column">
+          <label for="actividades">Actividades</label>
+          <input
+            pInputText
+            id="actividades"
+            placeholder="Actividades"
+            name="actividadesP"
+            #actividadesP="ngModel"
+            [(ngModel)]="participant.activities"
+          />
+        </div>
+        <div fxLayoutAlign="center center">
+          <button
+            class="my-button add-button"
+            [disabled]="
+              participant.name==='' || participant.activities==='' || participant.position===''
+            "
+            [ngClass]="participant.name==='' || participant.activities==='' || participant.position===''? 'botonInvalido':''"
+            (click)="addP()"
+          >
+            <span style="padding: 1vh"
+              ><i class="fa-regular fa-plus fa-xl"></i
+            ></span>
+            Participante
+          </button>
+        </div>
+      </div>
+      <div class="listP" fxLayout="row">
+        <p-table [value]="participants" class="col-md-9">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nombre</th>
+              <th>Cargo en el Evento</th>
+              <th>Actividades</th>
+
+              <th style="width: 5%"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr>
+              <td>{{ rowData.name }}</td>
+              <td>{{ rowData.position }}</td>
+              <td>{{ rowData.activities }}</td>
+
+              <td>
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-trash"
+                  (click)="eliminarP(rowIndex)"
+                ></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </form>
+  </p-tabPanel>
+  <p-tabPanel header="Header III">
+    <ng-template pTemplate="header">
+      <span [ngClass]="
+      validoFD && formDi.invalid? 'invalido' : ''
+      ">Diseño Curricular</span>
+    </ng-template>
+    <form #formDi="ngForm">
+      <div class="row">
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="descriptionE">Descripción del Evento</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="descriptionE"
+            pInputTextarea
+            name="descriptionE"
+            #descriptionE="ngModel"
+            [(ngModel)]="proposal.descriptionEvent"
+            [ngClass]="
+                valido && formDi.controls['descriptionE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+            [required]="true"
+          ></textarea>
+          <small *ngIf=" validoFD && formDi.controls['descriptionE'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="metodologiaE">Metodología de Trabajo</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="metodologiaE"
+            pInputTextarea
+            name="metodologiaE"
+            #metodologiaE="ngModel"
+            [(ngModel)]="proposal.metodologiaE"
+            [ngClass]="
+            validoFD && formDi.controls['metodologiaE'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            required
+          ></textarea>
+          <small *ngIf=" validoFD && formDi.controls['metodologiaE'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="introduccion">Introducción</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="introduccion"
+            name="introduccion"
+            #introduccion="ngModel"
+            [(ngModel)]="proposal.instroduction"
+            [ngClass]="
+            validoFD && formDi.controls['introduccion'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            required
+            pInputTextarea
+          ></textarea>
+          <small
+            *ngIf="validoFD && formDi.controls['introduccion'].invalid? 'ng-dirty ng-invalid' : ''"
+          >
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="justificacion">Justificación</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="justificacion"
+            pInputTextarea
+            name="justificacion"
+            #justificacion="ngModel"
+            [(ngModel)]="proposal.justification"
+            [ngClass]="
+            validoFD && formDi.controls['justificacion'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            required
+          ></textarea>
+          <small
+            *ngIf="validoFD && formDi.controls['justificacion'].invalid? 'ng-dirty ng-invalid' : ''"
+          >
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="metas">Metas</label>
+          <textarea
+            rows="3"
+            cols="100%"
+            id="metas"
+            pInputTextarea
+            name="metas"
+            placeholder="Meta 1&#10;Meta 2"
+            #metas="ngModel"
+            [ngClass]="
+            validoFD && formDi.controls['metas'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            [(ngModel)]="proposal.goals"
+  
+            required
+          >
+          </textarea>
+          <small *ngIf="validoFD && formDi.controls['metas'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="objetivos col-md-12">
+          <div class="general" fxLayout="column">
+            <label for="oGeneral">Objetivo General</label>
+            <textarea
+              rows="2"
+              cols="100%"
+              id="oGeneral"
+              pInputTextarea
+              name="objetivoG"
+              #objetivoG="ngModel"
+              [(ngModel)]="proposal.generalObjective"
+              [ngClass]="
+            validoFD && formDi.controls['objetivoG'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+              required
+            ></textarea>
+            <small *ngIf="validoFD && formDi.controls['objetivoG'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+          </div>
+          <div class="especifico participante" fxLayout="column">
+            <label for="oEspecifico">Objetivos Especificos</label>
+            <textarea
+              rows="3"
+              cols="100%"
+              id="oEspecifico"
+              pInputTextarea
+              placeholder="Objetivo 1&#10;Objetivo 2"
+              name="oEspecifico"
+              #oEspecifico="ngModel"
+              [(ngModel)]="proposal.specificObjective"
+              [ngClass]="
+              validoFD && formDi.controls['oEspecifico'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            ></textarea>
+            <small
+              *ngIf="validoFD && formDi.controls['oEspecifico'].invalid? 'ng-dirty ng-invalid' : ''"
+            >
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+          </div>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="pObjetivo">Público Objetivo</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="pObjetivo"
+            pInputTextarea
+            name="pObjetivo"
+            #pObjetivo="ngModel"
+            [(ngModel)]="proposal.objectivePublic"
+            [ngClass]="
+            validoFD && formDi.controls['pObjetivo'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            required
+          ></textarea>
+          <small *ngIf="validoFD && formDi.controls['pObjetivo'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="pObjetivo">A quien va dirigido</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="dirigidoA"
+            pInputTextarea
+            name="dirigidoA"
+            #dirigidoA="ngModel"
+            [(ngModel)]="proposal.dirigidoA"
+            [ngClass]="
+            validoFD && formDi.controls['dirigidoA'].invalid? 'ng-dirty ng-invalid' : ''
+            "
+            required
+          ></textarea>
+          <small *ngIf="validoFD && formDi.controls['dirigidoA'].invalid? 'ng-dirty ng-invalid' : ''">
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+      </div>
+    </form>
+  </p-tabPanel>
+  <p-tabPanel header="Header IIII">
+    <ng-template pTemplate="header">
+      <span [ngClass]="
+      validoFDE && formDescription.invalid? 'invalido' : ''
+      ">Descripción del Evento</span>
+    </ng-template>
+    <form class="" #formDescription="ngForm" >
+      <div  class="horarioE" fxLayout="column" > 
+        <div class="col-md-4"> 
+          <button class="my-button" (click)="showDialogHorario()">
+            Agregar Horario
+          </button>
+        </div> 
+      </div>
+      <div fxLayout="row">
+        <div class="precio" style="padding-top: 2vh;" fxLayout="column" class="col-md-4">
+          <label for="priceE" >Costo del Evento</label>
+            <input
+              pInputText
+              id="priceE"
+              placeholder="Costo"
+              name="priceE"
+              #priceE="ngModel"
+              [(ngModel)]="proposal.costo"
+              [ngClass]="
+              validoFDE && formDescription.controls['priceE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            />
+            <small *ngIf="validoFDE && formDescription.controls['priceE'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+
+        </div>
+        <div class="precio" style="padding-top: 2vh;" fxLayout="column" class="col-md-8">
+          <label for="facilitador" >Facilitador</label>
+            <input
+              pInputText
+              id="facilitador"
+              placeholder="Mgs.t "
+              name="facilitador"
+              #facilitador="ngModel"
+              [(ngModel)]="proposal.facilitador"
+              [ngClass]="
+              validoFDE && formDescription.controls['facilitador'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+              required
+            />
+            <small *ngIf="validoFDE && formDescription.controls['facilitador'].invalid? 'ng-dirty ng-invalid' : ''">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small>
+
+        </div>
+      </div>
+      
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="invitados">Expositores o invitados</label>
+        <textarea
+          rows="2"
+          cols="100%"
+          id="invitados"
+          pInputTextarea
+          name="invitadoE"
+          #invitadoE="ngModel"
+          [(ngModel)]="proposal.guests"
+          [ngClass]="
+              validoFDE && formDescription.controls['invitadoE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+          required
+        ></textarea>
+        <small *ngIf="validoFDE && formDescription.controls['invitadoE'].invalid? 'ng-dirty ng-invalid' : ''">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="evaluacionE">Evaluación</label>
+        <textarea
+          rows="2"
+          cols="100%"
+          id="evaluacionE"
+          pInputTextarea
+          name="evaluacionE"
+          #evaluacionE="ngModel"
+          [(ngModel)]="proposal.evaluacion"
+          [ngClass]="
+              validoFDE && formDescription.controls['evaluacionE'].invalid? 'ng-dirty ng-invalid' : ''
+              "
+          required
+        ></textarea>
+        <small *ngIf=" validoFDE && formDescription.controls['evaluacionE'].invalid? 'ng-dirty ng-invalid' : ''">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="cEvento">Contenido del Evento</label>
+        <textarea
+          rows="2"
+          cols="100%"
+          id="cEvento"
+          pInputTextarea
+          name="contenidoE"
+          #contenidoE="ngModel"
+          [(ngModel)]="proposal.contentEvent"
+          [ngClass]="
+          validoFDE && formDescription.controls['contenidoE'].invalid? 'ng-dirty ng-invalid' : ''
+          "
+          required
+        ></textarea>
+        <small *ngIf="validoFDE && formDescription.controls['contenidoE'].invalid? 'ng-dirty ng-invalid' : ''">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="habilidadesA">Habilidades a desarrollar</label>
+        <textarea
+          rows="2"
+          cols="100%"
+          id="habilidadesA"
+          pInputTextarea
+          name="habilidadesA"
+          #habilidadesA="ngModel"
+          [(ngModel)]="proposal.habilidades"
+          [ngClass]="
+          validoFDE && formDescription.controls['habilidadesA'].invalid? 'ng-dirty ng-invalid' : ''
+          "
+          required
+        ></textarea>
+        <small *ngIf="validoFDE && formDescription.controls['habilidadesA'].invalid? 'ng-dirty ng-invalid' : ''">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="dEventos">Duración del Evento</label>
+        <textarea
+          rows="2"
+          cols="100%"
+          id="dEventos"
+          pInputTextarea
+          name="duracionE"
+          #duracionE="ngModel"
+          [(ngModel)]="proposal.duration"
+          [ngClass]="
+          validoFDE && formDescription.controls['duracionE'].invalid? 'ng-dirty ng-invalid' : ''
+          "
+          required
+        >
+        </textarea>
+        <small *ngIf=" validoFDE && formDescription.controls['duracionE'].invalid? 'ng-dirty ng-invalid' : ''">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+      <div class="col-md-12 participante" fxLayout="column">
+        <label for="acEventos">Actividades</label>
+        <textarea
+          rows="4"
+          cols="100%"
+          id="acEventos"
+          pInputTextarea
+          name="actividadesEvento"
+          placeholder="Actividad 1&#10;Actividad 2"
+          #actividadesEvento="ngModel"
+          [(ngModel)]="proposal.activitiesEvent"
+          [ngClass]="
+          validoFDE && formDescription.controls['actividadesEvento'].invalid? 'ng-dirty ng-invalid' : ''
+          "
+          required
+        >
+        </textarea>
+        <small
+          *ngIf="validoFDE && formDescription.controls['actividadesEvento'].invalid? 'ng-dirty ng-invalid' : ''"
+        >
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+
+    </form>
+  </p-tabPanel>
+  <!-- <p-tabPanel>
+    <ng-template pTemplate="header">
+      <span>Facilitador</span>
+    </ng-template>
+  </p-tabPanel> -->
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <span >Datos Personales</span>
+    </ng-template>
+    <form class="row participante" #formFirma="ngForm">
+      <div class="col-md-6" fxLayout="column">
+        <label for="dAutor">Elaborado por</label>
+        <input
+          pInputText
+          id="dAutor"
+          placeholder="Elaborado Por"
+          name="autorE"
+          #autorE="ngModel"
+          [(ngModel)]="proposal.name"
+          [ngClass]="
+            autorE.invalid && autorE.touched ? 'ng-dirty ng-invalid mr-2' : ''
+          "
+          required
+        />
+        <small *ngIf="autorE.errors?.['required'] && autorE.touched">
+          <span class="inputInvalido">Este campo es requerido</span>
+        </small>
+      </div>
+      <div class="col-md-6" fxLayout="column">
+        <label for="date">Fecha de Presentación</label>
+        <p-calendar
+          name="presentationDate"
+          #presentationDate="ngModel"
+          [(ngModel)]="date"
+        ></p-calendar>
+      </div>
+      <div class="col-md-12" fxLayout="row" fxLayoutAlign="space-between">
+        <div fxLayout="column">
+          <button class="my-button my-button-yellow" (click)="mostrarPropuesta()" fxLayoutAlign="space-evenly center">
+            <i class="fa-solid fa-eye fa-lg"></i> <span style="padding-left: 2vh;">Propuesta</span> 
+          </button>
+          <button class="my-button my-button-yellow" type="submit" (click)="mostrarEs()" fxLayoutAlign="space-evenly center" >
+            <i class="fa-solid fa-eye fa-lg"></i> <span style="padding-left: 2vh;">Esquema Curricular</span> 
+          </button>
+        </div>
+      
+       <div>
+        <div fxLayout="row">
+          <div fxLayoutAlign="center center" fxLayout="column" >
+           <!--  <div style="height: 9vh; margin-top: 3.5vh;" class="alert alert-danger" role="alert" *ngIf="errorMessage && (formP.invalid || formDi || formDescription )">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              {{errorMessage}}
+            </div> -->
+          </div> 
+          <div>
+            <button 
+            class="my-button"
+            type="submit"
+            (click)="enviarPropuesta(formP,formDi,formDescription)"
+            fxLayout="center center"
+          >
+            Enviar Propuesta
+            <p-progressSpinner class="spinner" *ngIf="spinner" [style]="{ width: '4vh', height:'4vh'}" styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s"></p-progressSpinner>
+            </button>
+          </div>
+        </div>
+       
+       </div>
+       
+       
+        
+      </div>
+      
+    </form>
+
+    <iframe
+      *ngIf="pdfUrl"
+      [src]="pdfUrl"
+      style="width: 100%; height: 600px"
+    ></iframe>
+    <!-- <div  id="encabezadoHtml" #encabezadoHtml class="encabezado">
+      <div class="logo" fxLayout="row">
+        <img src="../../../../assets/logoUnibe.png" alt="" />
+        <div fxLayout="column" fxLayoutAlign="center center" class="headerTitle">
+          <span class="Unib">UNIVERSIDAD IBEROAMERICANA DEL ECUADOR</span>
+          <span class="subtitle">Vinculación con la Sociedad</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <p-fileUpload
+      [showCancelButton]="false"
+      chooseLabel="Seleccione Firma"
+      [showUploadButton]="false"
+      name="demo[]"
+      (onUpload)="onUpload($event)"
+      accept="image/*"
+      [maxFileSize]="1000000"
+    >
+      <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+          <li *ngFor="let file of uploadedFiles">
+            {{ file.name }} - {{ file.size }} bytes
+          </li>
+        </ul>
+      </ng-template>
+    </p-fileUpload> -->
+  </p-tabPanel>
+
+  <p-tabPanel [disabled]="true">
+    <ng-template pTemplate="header">
+    </ng-template>
+
+    <div id="content" #content class="content" fxLayout="column">
+      <div>
+        <div class="titP" fxLayout="column" fxLayoutAlign="center center">
+          <span class="nameP">Propuesta de {{ selectedEvent?.name }} </span>
+        </div>
+        <div class="DatosP" fxLayout="column">
+          <span class="bold">1. Datos de Propuesta</span>
+          <div fxLayout="column" class="nombreE bold">
+            <span class="titNevent bold">1.1 Nombre del Evento</span>
+            <span class="nEvento normalL"> {{ proposal.nameEvent }} </span>
+            <div class="fecha" fxLayout="row">
+              <span class="bold">Fecha:</span>
+              <span class="normalL" style="padding-left: 3px">{{
+                getActualDate()
+              }}</span>
+            </div>
+            <!-- <div class="hora" fxLayout="row">
+              <span class="bold">Hora: </span>
+              <span class="normalL">15h00</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="nombreE marginT" fxLayout="column">
+          <span class="bold">1.2 Datos Generales</span>
+          <table class="table-bordered marginT">
+            <tr>
+              <td style="width: 22%">Institución</td>
+              <td class="normalL">{{ proposal.institution }}</td>
+            </tr>
+            <tr>
+              <td>Facultad</td>
+              <td class="normalL">{{ selectedFaculty?.name }}</td>
+            </tr>
+            <tr>
+              <td>Carrera</td>
+              <td class="normalL">{{ selectedCareer?.name }}</td>
+            </tr>
+            <tr>
+              <td>Enlace Zoom</td>
+              <td class="normalL">{{ proposal.linkZoom }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="nombreE participantesE bold marginT" fxLayout="column">
+          <span>1.3 Participantes del Evento</span>
+          <div class="tablaPE marginT">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Cargo en el evento</th>
+                  <th>Actividades</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let participante of participants">
+                  <td class="normalL">{{ participante.name }}</td>
+                  <td class="normalL">{{ participante.position }}</td>
+                  <td class="normalL">{{ participante.activities }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="localizacion" fxLayout="column">
+          <span class="bold fontTitle">2. Localización Geográfica</span>
+          <div class="tablaPE marginT">
+            <table class="table table-bordered">
+              <thead>
+                <tr style="font-size: 9.5px">
+                  <th>Provincia</th>
+                  <th>Cantón</th>
+                  <th>Sector</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="font-size: 8.5px">
+                  <td>{{ proposal.provincia }}</td>
+                  <td>{{ proposal.canton }}</td>
+                  <td>{{ proposal.sector }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="introduccion" fxLayout="column">
+          <span class="bold fontTitle">3. Introducción</span>
+          <span class="texto">
+            {{ proposal.instroduction }}
+          </span>
+        </div>
+        <div class="Justificación marginT" fxLayout="column">
+          <span class="bold fontTitle">4. Justificación</span>
+          <span class="texto">
+            {{ proposal.justification }}
+          </span>
+        </div>
+        <div class="metas marginT" fxLayout="column">
+          <span class="bold fontTitle">5. Metas</span>
+          <ul class="listaM">
+            <li *ngFor="let goals of proposal.goals.split('\n')" class="textoA">
+              {{ goals }}
+            </li>
+          </ul>
+        </div>
+        <div class="objetivos" fxLayout="column">
+          <span class="bold fontTitle">6. Objetivos</span>
+          <div class="objetivoG nombreE marginT" fxLayout="column">
+            <span class="bold">6.1 Objetivo General</span>
+            <span class="texto">
+              {{ proposal.generalObjective }}
+            </span>
+          </div>
+          <div class="objetivosE nombreE marginT">
+            <span class="bold">6.2 Objetivos Específicos</span>
+            <ul class="listaM">
+              <li
+                class="texto"
+                *ngFor="let objetivo of proposal.specificObjective.split('\n')"
+              >
+                {{ objetivo }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="publicoO marginT" fxLayout="column">
+          <span class="bold fontTitle">7. Publico Objetivo</span>
+          <span class="texto">
+            {{ proposal.objectivePublic }}
+          </span>
+        </div>
+        <div class="descripcionE marginT">
+          <span class="bold fontTitle">8. Descripción del Evento</span>
+          <div class="titE nombreE marginT">
+            <span class="bold"
+              >Titulo del {{ selectedEvent?.name }} :<span class="detalleE">
+                {{ proposal.titleEvent }}
+              </span></span
+            >
+          </div>
+          <div class="titE nombreE marginT">
+            <span class="bold"
+              >Expositores o Invitados :<span class="detalleE">{{
+                proposal.guests
+              }}</span></span
+            >
+          </div>
+          <div class="titE nombreE marginT">
+            <span class="bold"
+              >Fecha :<span class="detalleE" *ngIf="dateI" > {{getFormatDate(dateI)}} </span></span
+            >
+          </div>
+          <div class="titE nombreE marginT">
+            <span class="bold"
+              >Contenido del evento :<span class="detalleE">
+                {{ proposal.contentEvent }}
+              </span></span
+            >
+          </div>
+        </div>
+        <div class="actividadesE marginT" fxLayout="column">
+          <span class="bold fontTitle">9. Actividades</span>
+          <ol class="listaM">
+            <li
+              *ngFor="let activity of proposal.activitiesEvent.split('\n')"
+              class="textoA"
+            >
+              {{ activity }}
+            </li>
+          </ol>
+        </div>
+        <div class="legalizacion" fxLayout="column">
+          <span class="bold fontTitle">10. Legalizaciòn del Evento</span>
+          <div class="datosE nombreE" fxLayout="column">
+            <span class="bold marginT"
+              >Elaborado por:<span class="normalL" style="padding-left: 3px">
+                {{ proposal.name }}</span
+              >
+            </span>
+            <span class="bold marginT"
+              >Fecha de Presentaciòn:<span
+                class="normalL"
+                style="padding-left: 3px" *ngIf="actualDate"
+                >{{ getActualDate() }}
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="esquemaC" #esquemaC class="esquemaC" fxLayout="column">
+      <div class="titleE" fxLayoutAlign="center center">
+        <span class="boldTE">Esquema Curricular</span>
+      </div>
+      <div class="contentE">
+        <div class="nameE">
+          <span class="boldE">1. Nombre del Evento:</span>
+          <span class="normalE paddingTextLeft">{{proposal.nameEvent}}</span>
+        </div>
+        <div class="fInicioFin paddingTextTop">
+          <span class="boldE">2. Inicio:</span>
+          <span class="normalE paddingTextLeft" *ngIf="dateI" >{{getFormatDate(dateI)}}</span>
+          <span class="boldE" style="padding-left: 6px">Fin:</span>
+          <span class="normalE paddingTextLeft" *ngIf="dateF">{{getFormatDate(dateF)}}</span>
+        </div>
+        <div class="deacripcionE paddingTextTop" fxLayout="column">
+          <span class="boldE">3. Descripción</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.descriptionEvent}}</span
+          >
+        </div>
+        <div class="duracionE paddingTextTop" fxLayout="column">
+          <span class="boldE">4. Duración</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.duration}}</span
+          >
+        </div>
+        <div class="horarioE paddingTextTop" fxLayout="column">
+          <span class="boldE">5. Horario</span>
+          <div class="marginT">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="boldE" style="font-size: 8.7px">
+                  <th>Dias</th>
+                  <th>Inicio</th>
+                  <th>Fin</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="font-size: 8.5px" *ngFor="let horario of horarios">
+                  <td>{{horario.diaSemana }}</td>
+                  <td>{{getHour(horario.horaInicio )}}</td>
+                  <td>{{getHour(horario.horaFin )}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>  
+        </div>
+        <div class="costoE">
+          <span class="boldE">6. Costo:</span>
+          <span class="normalE paddingTextLeft"> {{proposal.costo}} </span>
+        </div>
+        <div class="objetivoE paddingTextTop" fxLayout="column">
+          <span class="boldE">7. Objetivo</span>
+          <span class="normalE paddingTextLeft"
+            > {{proposal.generalObjective}} </span
+          >
+        </div>
+        <div class="dirigidoE paddingTextTop" fxLayout="column">
+          <span class="boldE">8. Dirigido a </span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.dirigidoA}}</span
+          >
+        </div>
+        <div class="habilidadesE paddingTextTop" fxLayout="column">
+          <span class="boldE">9. Habilidades a desarrollar </span>
+          <span class="normalE paddingTextLeft "
+            > {{proposal.habilidades}} </span
+          >
+        </div>
+        <div class="contenidoE paddingTextTop" fxLayout="column">
+          <span class="boldE">10. Contenido</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.contentEvent}}</span
+          >
+        </div>
+        <div class="metodologiaE paddingTextTop" fxLayout="column">
+          <span class="boldE">11. Metodología de trabajo</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.metodologiaE}}</span
+          >
+        </div>
+        <div class="evaluacionE paddingTextTop" fxLayout="column">
+          <span class="boldE">12. Evaluación</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.evaluacion}}</span
+          >
+        </div>
+        <div class="facilitadorE paddingTextTop" fxLayout="column">
+          <span class="boldE">13. Facilitador</span>
+          <span class="normalE paddingTextLeft"
+            >{{proposal.facilitador}}</span
+          >
+        </div>
+        <div class="fechaE paddingTextTop">
+          <span class="boldE">14. Fecha de Elaboración:</span>
+          <span class="normalE paddingTextLeft"> {{getActualDate()}} </span>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <div fxLayoutAlign="end">
+    <button class="my-button" *ngIf="editar" routerLink="/docente/misPropuestas">
+      Cancelar Edición
+    </button>
+  </div>
+</p-tabView>
+
+<!-- Dialogo Horario  -->
+<p-dialog
+  header="Horario"
+  [(visible)]="dialogH"
+  [modal]="true"
+  [style]="{ width: '60vw', height: '60vh' }"
+>
+  <form style="margin-top: 2vh;"  fxLayoutAlign="start center" #formulario="ngForm" (submit)="addSchedule()">
+    <div class="col-md-3">
+      <label for="">Día</label>
+      <p-dropdown
+      [options]="dias"
+      name="diaH"
+      [showClear]="true"
+      [showClear]="true"
+      placeholder="Seleccione una"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="40"
+      [style]="{ width: '26vh' }"
+      #diaH="ngModel"
+      [(ngModel)]="horarioSingle.diaSemana"
+    >
+    </p-dropdown>
+    </div>
+    <div fxLayout="row" class="col-md-7" fxLayoutAlign="space-evenly center">
+      <div fxLayout="column">
+        <label for="horaI">Hora de Inicio</label>
+        <p-calendar appendTo="body"  [showTime]="true" [timeOnly]="true" inputId="horaI" name="startTime" #startTime="ngModel" [(ngModel)]="horarioSingle.horaInicio" [required]="true"></p-calendar>
+      </div>
+      <div fxLayout="column">
+        <label for="horaF">Hora de Fin</label>
+        <p-calendar appendTo="body"  [showTime]="true" [timeOnly]="true" inputId="horaF" name="endTime" #endTime="ngModel" [(ngModel)]="horarioSingle.horaFin" [required]="true"  ></p-calendar>
+      </div>
+    </div>
+    <div class="addHours" fxLayoutAlign="center center" >
+      <button class="my-button" type="submit" fxLayout="row" [ngClass]="formulario.invalid || horarioSingle.diaSemana===''? 'botonInvalido':''" [disabled]="formulario.invalid || horarioSingle.diaSemana===''" >
+        Agregar
+      </button>
+      
+    </div>
+  </form>
+  <div class="tableH">
+    <p-table [value]="horarios" class="col-md-9">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 30%">Día</th>
+          <th style="width: 30%">Hora de Inicio</th>
+          <th style="width: 30%">Hora Fin</th>
+          <th style="width: 5%"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowData.diaSemana }}</td>
+          <td>{{ getHour(rowData.horaInicio)}}</td>
+          <td>{{ getHour(rowData.horaFin) }}</td>
+          <td>
+            <div class="deleteH">
+              <i  class="fa-solid fa-trash fa-xl" (click)="deleteSchedule(rowIndex)"></i>
+            </div>
+           
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-dialog>
+
+    <p-dialog [modal]="true" [visible]="visible" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" [closable]="false" >
+      <ng-template pTemplate="header">
+        <div fxLayoutAlign="center center" style="width: 100%;">
+          <span class="helvetica" >Propuesta Enviada</span>
+        </div>
+      </ng-template>
+      <div class="iconOk" style="width: 100%;" fxLayout="row" fxLayoutAlign="center center">
+        <div style="padding-right: 5vh;">
+          <i class="fa-solid fa-circle-check"></i>   
+        </div>
+        <div fxLayoutAlign="center center" >
+          <span class="confirmaEnvio">La propuesta ha sido enviada a revisión</span>
+        </div>
+      </div>
+      <div class="confirm" fxLayoutAlign="center center">
+        <a routerLink="/docente/misPropuestas" >
+          <button style="width: 20vh;" class="my-button">Ok</button>
+        </a>
+        
+      </div>
+  </p-dialog>
+

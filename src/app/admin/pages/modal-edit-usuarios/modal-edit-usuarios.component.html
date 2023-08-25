@@ -1,0 +1,186 @@
+<form #formEditarUsuario="ngForm">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          class="form-control"
+          placeholder="Ingrese su nombre"
+          name="name"
+          [(ngModel)]="rUsuario.name"
+          #name="ngModel"
+          pattern=".*\S+.*"
+          [ngClass]="
+            name.invalid && name.touched && !userCreate ? 'is-invalid' : 'valid'
+          "
+          required
+        />
+        <small *ngIf="name.errors?.['required'] && name.touched && !userCreate">
+          <label class="inputInvalido">
+            Este campo no puede estar vacio</label
+          >
+        </small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ingrese su apellido"
+          name="apellido"
+          [(ngModel)]="rUsuario.lastname"
+          #apellido="ngModel"
+          [ngClass]="
+            apellido.invalid && apellido.touched && !userCreate ? 'is-invalid' : 'valid'
+          "
+          required
+        />
+        <small *ngIf="apellido.errors?.['required'] && apellido.touched && !userCreate">
+          <label class="inputInvalido">
+            Este campo no puede estar vacio</label
+          >
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ingrese su cédula"
+          name="cedula"
+          [(ngModel)]="rUsuario.cedula"
+          #cedula="ngModel"
+          [ngClass]="
+            cedula.invalid && cedula.touched && !userCreate ? 'is-invalid' : 'valid'
+          "
+          required
+        />
+        <small *ngIf="cedula.errors?.['required'] && cedula.touched && !userCreate">
+          <label class="inputInvalido">
+            Este campo no puede estar vacio</label
+          >
+        </small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="correo">Correo Electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Ingrese su correo electrónico"
+          name="email"
+          pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)@+(.[a-z0-9-]+)(.[a-z]{2,4})$"
+          [ngClass]="
+            email.invalid && email.touched && !userCreate ? 'is-invalid' : 'valid' 
+          "
+          [(ngModel)]="rUsuario.email"
+          #email="ngModel"
+          required
+        />
+        <small *ngIf="email.errors?.['required'] && email.touched && !userCreate">
+          <label for="" class="inputInvalido">
+            Este campo no puede estar vacio</label
+          >
+        </small>
+        <small
+          *ngIf="!userCreate &&  formEditarUsuario.controls['email']?.errors?.['pattern']"
+        >
+          <label for="" class="inputInvalido"
+            >formato invalido</label
+          >
+        </small>
+      </div>
+    </div>
+  </div>
+   <div class="row">
+    <!-- <div class="col-md-6">
+      <label style="margin-right: 5vh">Roles</label>
+      <div class="flex flex-column gap-3">
+          <div class="roles" fxLayout="column" >
+            <div *ngFor="let category of roles" class="field-checkbox" fxLayout="row">
+                <p-radioButton  name="category" 
+                 [value]="category"
+                 [(ngModel)]="selectedRol"
+                 #rol="ngModel"
+                 [ngClass]="
+                  !userCreate 
+                 ? 'ng-dirty ng-invalid mr-2'
+                   : ''
+                   "
+            [required]="true"
+                ></p-radioButton>
+                <div class="label">
+                  <label fxFlexAlign="center center" [for]="category.name">{{ category.name }}</label>
+                </div>
+                
+            </div>
+        </div>
+      </div>  
+      
+    </div>  -->
+    
+     <div class="col-md-6">
+      <span class="" fxLayout="column">
+        <label>Carrera</label>
+        <p-dropdown
+          [options]="carreras"
+          optionLabel="name"
+          name="carrera"
+          [showClear]="true"
+          filterBy="name" [showClear]="true"
+          #carrera="ngModel"
+          [ngClass]="
+            !userCreate 
+              ? 'ng-dirty ng-invalid mr-2'
+              : ''
+          "
+          [(ngModel)]="selectedCareer"  
+          placeholder="Seleccione una"
+          [virtualScroll]="true"
+          [virtualScrollItemSize]="40"
+          [style]="{ width: '30vh' }"
+          [required]="true"
+        >
+        </p-dropdown>
+        <small *ngIf="carrera.errors?.['required'] && carrera.touched && !userCreate">
+          <label class="inputInvalido">
+            Este campo no puede estar vacio</label
+          >
+        </small> 
+        
+      </span>
+    </div> 
+    <div class="col-md-6" fxLayout="column">
+      <label for="" class="estiloLetra"> Activar Usuario </label>
+      <p-selectButton [options]="stateOptions2" name="switch" #switch="ngModel" [(ngModel)]="rUsuario.estado" optionLabel="label" optionValue="value"></p-selectButton>  
+    <!--   <p-inputSwitch name="switch" #switch="ngModel" [(ngModel)]="rUsuario.estado"></p-inputSwitch> -->
+    </div>  
+   
+  </div>
+  
+  <div class="botonActualizar estiloLetra" fxLayoutAlign="center center">
+    <button
+    style="margin-top: 5vh"
+    type="submit"
+    class="my-button"
+    (click)="editarUsuario()"
+    [disabled]="formEditarUsuario.invalid ||formEditarUsuario.untouched  "
+    [ngClass]="formEditarUsuario.invalid ||formEditarUsuario.untouched?'botonInvalido':''"
+    fxLayout="center center"
+    
+  >
+    Realizar Cambios   
+    <p-progressSpinner class="spinner" *ngIf="spinner" [style]="{ width: '4vh', height:'4vh'}" styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s"></p-progressSpinner> 
+  </button>
+  </div>
+ 
+</form>

@@ -1,0 +1,69 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";    
+$color-azulUnibe: #00498C;
+$color-amarilloUnibe: #f4c200;
+.arial{
+  font-family: Arial;
+}
+* {
+    margin: 0;
+    padding: 0;
+  }
+.p-input-icon-right > .p-inputtext {
+    width: 40vh;
+}
+.p-tag {
+  width: 6rem;
+}
+.helvetica{
+  font-family: Helvetica;
+  font-size: 4vh;
+    font-weight: 600
+}
+.my-button {
+  margin-top: 4vh;
+  background-color: #00498C;
+  color: #FFFFFF;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease; 
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+.my-button:hover {
+  background-color: #00264D;
+  color:$color-amarilloUnibe
+}
+p-table .p-datatable-thead > tr > th{
+  background-color: $color-azulUnibe !important;
+  color: $color-amarilloUnibe !important
+}
+p-datatable .p-sortable-column .p-sortable-column-icon {
+  color: $color-amarilloUnibe !important
+}
+.pi-sort-alt:before{
+  color: $color-amarilloUnibe !important
+}
+.p-datatable .p-datatable-header{
+  border: none !important;
+  background-color: white !important;
+}
+.pi-sort-amount-up-alt:before{
+  color: $color-amarilloUnibe !important
+}
+.pi-sort-amount-down:before {
+  color: $color-amarilloUnibe !important
+}
+.p-fileupload .p-fileupload-buttonbar .p-button {
+  background-color: $color-amarilloUnibe;
+}
+.p-fileupload .p-fileupload-buttonbar .p-button:hover {
+    color:$color-azulUnibe
+}
+.inputInvalido{
+  color: rgba(255, 0, 0, 0.804);
+}

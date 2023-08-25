@@ -1,0 +1,16 @@
+$color-azulUnibe: #00498C;
+$color-amarilloUnibe: #f4c200;
+
+.botonInvalido{
+    background-color: $color-azulUnibe; 
+    opacity: 0.5;
+}
+.inputInvalido{
+    font-family: Arial;
+    color: red;
+    opacity: 0.5;
+}
+.estiloLetra{
+    font-family: Arial;
+}
+:host ::ng-deep .colorEncabezado{ background:red !important}

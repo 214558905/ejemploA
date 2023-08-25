@@ -1,0 +1,16 @@
+.cuerpo{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    //padding: 4vh;
+    margin-left: 50px;
+    transition: all 500ms linear;
+    height: 100%;
+}
+.cuerpo-expanded{
+    margin-left: 300px;
+    transition: all 500ms linear;
+    //padding: 5vh;
+}
+.contenido{
+    height: 100vh;
+}

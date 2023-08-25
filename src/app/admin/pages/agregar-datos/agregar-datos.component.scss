@@ -1,0 +1,25 @@
+$color-azulUnibe: #00498C;
+$color-amarilloUnibe: #f4c200;
+
+.fondo{
+    margin: 5vh 3vh 3vh 3vh
+}
+.addCareer{
+    color: $color-azulUnibe;
+    font-size: 40px;
+    transition: color .5s ease;
+}
+.addCareer:hover{
+    color: #00488cd4;
+    cursor: pointer;
+}
+.icons{
+    transition: color .3s ease-out;
+}
+.icons:hover{
+    cursor: pointer;
+    color: $color-amarilloUnibe;
+}
+.nav-tabs a:hover{
+    color: $color-amarilloUnibe;
+}

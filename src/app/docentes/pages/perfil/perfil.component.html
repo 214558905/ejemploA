@@ -1,0 +1,270 @@
+
+<p-toast></p-toast>
+<div class="fondo">
+    <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" *ngIf="usuarioData">
+      <div class="foto" fxLayoutAlign="center center" fxLayout="column" >
+        <div class="picture" [ngClass]="usuarioData.foto!=''?'sinBorde':''" [ngClass]=" 
+        formEnviado && !usuarioData.foto?'sinBordeR':''
+        ">
+          <img [src]="usuarioData.foto"  id="archivo" *ngIf="usuarioData.foto" >
+          <img src="../../../../assets/usuario.png"  id="archivo" *ngIf="!usuarioData.foto" >
+         
+        </div>
+        <div class="buttonPicture">
+          <div class="custom-file">
+            <input type="file" name="customFile" #customFile class="custom-file-input" id="customFile" (change)="seleccionarImagen($event)" required>
+            <label class="custom-file-label" for="customFile">Seleccionar Foto</label>
+          </div>
+        </div>
+      </div>
+        <div fxLayout="row">
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="nameD">Nombre</label>
+              <input
+                pInputText
+                id="nameD"
+                name="nameD" 
+                placeholder="Nombre"
+                #nameD="ngModel"
+                [(ngModel)]="usuarioData.name"
+                
+                [ngClass]="
+                  formEnviado && myForm.controls['nameD'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado && myForm.controls['nameD'].invalid">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="lastnameD">Apellido</label>
+              <input
+                pInputText
+                id="lastnameD"
+                placeholder="Apellido"
+                #lastnameD="ngModel"
+                [(ngModel)]="usuarioData.lastname"
+                name="lastnameD" 
+                [ngClass]="
+                  formEnviado && myForm.controls['lastnameD'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado && myForm.controls['lastnameD'].invalid">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="telefono">Telefono</label>
+              <input
+                pInputText
+                id="telefono"
+                placeholder="Telefono"
+                #telefono="ngModel"
+                [(ngModel)]="usuarioData.telefono"
+                name="telefono" 
+                [ngClass]="
+                  formEnviado && myForm.controls['telefono'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado && myForm.controls['telefono'].invalid ">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+         
+        </div>
+        <div fxLayout="row">
+          <div class="col-md-4" fxLayout="column">
+            <label for="fechaN">Fecha de Nacimiento</label>
+            <p-calendar name="fechaN" [(ngModel)]="date" [showIcon]="true" inputId="fechaN"
+            [ngClass]=" 
+                  formEnviado && myForm.controls['fechaN'].invalid ? 'ng-dirty ng-invalid' : ''
+                  "
+            [required]="true"
+            ></p-calendar>
+            <small *ngIf="formEnviado && myForm.controls['fechaN'].invalid  ">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="nacionalidad">Nacionalidad</label>
+              <input
+                pInputText
+                id="nacionalidad"
+                placeholder="Nacionalidad"
+                #nacionalidad="ngModel"
+                [(ngModel)]="usuarioData.nacionalidad"
+                name="nacionalidad" 
+                [ngClass]="
+                  formEnviado && myForm.controls['nacionalidad'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado && myForm.controls['nacionalidad'].invalid">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="cedula">Cédula</label>
+              <input
+                pInputText
+                id="cedula"
+                placeholder="Cédula"
+                #cedula="ngModel"
+                [(ngModel)]="usuarioData.cedula"
+                name="cedula" 
+                [ngClass]="
+                 formEnviado && myForm.controls['cedula'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado&& myForm.controls['cedula'].invalid">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+          
+        </div>
+        <div fxLayout="row">
+          <div class="col-md-4" fxLayout="column">
+            <div fxLayout="column">
+              <label for="direccion">Dirección</label>
+              <input
+                pInputText
+                id="direccion"
+                placeholder="Dirección"
+                #direccion="ngModel"
+                [(ngModel)]="usuarioData.direccion"
+                name="direccion" 
+                [ngClass]="
+                  formEnviado && myForm.controls['direccion'].invalid? 'ng-dirty ng-invalid' : ''
+                  "
+                [required]="true"
+              />
+            </div>
+            <small *ngIf="formEnviado && myForm.controls['direccion'].invalid">
+              <span class="inputInvalido">Este campo es requerido</span>
+            </small> 
+          </div>
+
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="educacion">Educación</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="educacion"
+            name="educacion"
+            #educacion="ngModel"
+            [(ngModel)]="usuarioData.educacion"
+            [ngClass]="
+              formEnviado && myForm.controls['educacion'].invalid
+                ? 'ng-dirty ng-invalid'
+                : ''
+            "
+            required
+            pInputTextarea
+          ></textarea>
+          <small
+            *ngIf="formEnviado && myForm.controls['educacion'].invalid"
+          >
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div class="col-md-12 participante" fxLayout="column">
+          <label for="experiencia">Experiencia Profesional</label>
+          <textarea
+            rows="2"
+            cols="100%"
+            id="experiencia"
+            name="experiencia"
+            #experiencia="ngModel"
+            [(ngModel)]="usuarioData.experienciaProfesional"
+            [ngClass]="
+              formEnviado && myForm.controls['experiencia'].invalid
+                ? 'ng-dirty ng-invalid'
+                : ''
+            "
+            required
+            pInputTextarea
+          ></textarea>
+          <small
+            *ngIf="formEnviado && myForm.controls['experiencia'].invalid"
+          >
+            <span class="inputInvalido">Este campo es requerido</span>
+          </small>
+        </div>
+        <div fxLayoutAlign="center center">
+            <button  class="my-button" type="submit" [disabled]="spinner" [ngClass]="spinner?'disable':''" >Guardar Datos
+              <p-progressSpinner class="spinner" *ngIf="spinner" [style]="{ width: '4vh', height:'4vh'}" styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s"></p-progressSpinner>
+            </button>
+        </div>
+      
+        
+    </form>
+</div>
+<!-- <iframe
+      *ngIf="pdfUrl"
+      [src]="pdfUrl"
+      style="width: 100%; height: 600px"
+></iframe> -->
+<div style="width: 1%; margin-top: -10vh;">
+  <p-tabView >
+    <p-tabPanel [disabled]="true">
+  
+    </p-tabPanel>
+    <p-tabPanel [disabled]="true">
+      <div #contenidoProfile fxLayout="column" class="contenidoProfile" *ngIf="usuarioData" >
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+          <div class="nameP">
+            <span class="nameText">{{usuarioData.name}} {{usuarioData.lastname}}</span>
+          </div>
+          <div class="fotoPdf"  >
+            <img   [src]="usuarioData.foto"  id="archivo" *ngIf="usuarioData.foto" >
+          
+          </div>
+        </div>
+        <div class="marginTop fechaNacimiento" fxLayout="row">
+          <span class="normalFont bold">Fecha de Nacimiento:</span>
+          <span class="normalFont" style="padding-left: 3px;" *ngIf="date" >{{getFormatDate(date)}}</span>
+        </div>
+        <div class="marginTop nacionalidadpdf" fxLayout="row">
+          <span class="normalFont bold">Nacionalidad:</span>
+          <span class="normalFont" style="padding-left: 3px;">{{usuarioData.nacionalidad}}</span>
+        </div>
+        <div class="marginTop cedula" fxLayout="row">
+          <span class="normalFont bold">C.I.</span>
+          <span class="normalFont" style="padding-left: 3px;">{{usuarioData.cedula}}</span>
+        </div>
+        <div class="marginTop direccionA" fxLayout="column">
+          <span class="normalFont bold">Dirección Actual:</span>
+          <span class="normalFont">{{usuarioData.direccion}}</span>
+        </div>
+        <div class="marginTop telefono" fxLayout="row">
+          <span class="normalFont bold">Tel.:</span>
+          <span class="normalFont" style="padding-left: 3px;">{{usuarioData.telefono}}</span>
+        </div>
+        <div class="marginTop educacion" fxLayout="column">
+          <span class="normalFont bold">Educación:</span>
+          <span class="normalFont">{{usuarioData.educacion}}</span>
+        </div>
+        <div class="marginTop direccionA" fxLayout="column">
+          <span class="normalFont bold">Expreriencia:</span>
+          <span class="normalFont">{{usuarioData.experienciaProfesional}}</span>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+

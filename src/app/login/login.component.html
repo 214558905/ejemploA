@@ -1,0 +1,90 @@
+
+<div class="fondo" fxLayout="column" fxLayoutAlign="pace-between">
+  <div>
+    <app-header></app-header>
+
+  </div>
+  <div class="contLogin d-flex justify-content-center align-items-center">
+    <div class="login">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="logo text-center">
+          <img src="../../assets/logoUnibe2.png" alt="" />
+        </div>
+        <div class="titleLogin"> 
+          <div class="text-center">
+            <span class="text-center tituloIniciarS" *ngIf="!error">Iniciar Sesión</span>
+          </div>
+          
+          <div class="alert alert-danger" role="alert" *ngIf="error">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            {{message}}
+          </div>
+        </div>
+        <div class="mb-3 col-md-12">
+          <div class="input-group flex-column">
+            <label for="cedula" class="label-form">Usuario</label>
+
+            <div class="d-flex flex-row">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                id="cedula"
+                placeholder="cédula"
+                formControlName="cedula"
+                [class.is-invalid]="cedulaValid"
+              />  
+            </div>
+           
+            <small *ngIf="cedulaValid" class="text-danger">Este campo es obligatorio</small>
+          </div>
+        </div>
+        <div class="mb-3 col-md-12">
+          <div class="input-group flex-column">
+            <label for="password" class="label-form">Password</label>
+            <div class="d-flex flex-row">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+              </div>
+              <input
+                type="{{ showPassword ? 'text' : 'password' }}"
+                class="form-control"
+                placeholder="Password"
+                aria-label="Password"
+                id="password"
+                formControlName="password"
+                [class.is-invalid]="passwordValid"
+              />
+              
+                <span class="input-group-text" (click)="showPassword = !showPassword">
+                  <i [ngClass]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </span>
+            
+            </div>
+
+           
+            <small *ngIf="passwordValid" class="text-danger">Este campo es obligatorio</small>
+          </div>
+        </div>
+        <div class="recuperarPassword mb-3 col-md-12" fxLayoutAlign="end">
+          <a routerLink="/recuperarContraseña">Olvide mi contraseña</a>
+        </div>
+        <div class="text-center">
+          <button class="my-button" type="submit">Iniciar Sesión</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div>
+    <app-footer></app-footer> 
+  </div>
+  
+</div>
+
+

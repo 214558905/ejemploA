@@ -1,0 +1,52 @@
+
+<div [ngClass]="{'cuerpo': showSidebar, 'cuerpo-expanded': !showSidebar}">
+    <div id="sidemenu" [ngClass]="{'menu-expanded': !showSidebar, 'menu-collapsed': showSidebar}" id="sidemenu"  >
+      <div id="header" fxLayoutAlign="space-evenly center">
+        <div id="title"><span class="helvetica" style="font-size: 15px;" >{{name}}</span></div>
+          <div id="menu-btn" (click)="ontap()">
+            <span><i class="fa-solid fa-bars fa-xl"></i> </span>
+          </div>
+        
+      </div>
+      <div id="profile">
+        <div id="photo">
+          <img src="../../../../assets/logoUnibeBlanco.png" alt="" />
+        </div>
+        <div id="name"><span class="helvetica" style="font-size: 20px;" > Docente </span></div>
+      </div>
+  
+      <div id="menu-items">
+        <div class="item" *ngFor="let item of munuItems">
+          <a [routerLink]="item.url">
+            <div class="icon">
+              <span><i class="{{item.icono}}"></i></span>
+            </div>
+            <div class="title">{{item.titulo}}</div>
+          </a>
+        </div>
+    </div>
+    <div id="menu-items" class="cerrarS">
+      <div class="item cerrar" >
+        <a (click)="logOut()">
+          <div class="icon">
+            <span><i class="fa-solid fa-right-from-bracket fa-xl"></i></span>
+          </div>
+          <div class="title">Cerrar Sesión</div>
+        </a>
+      </div>
+  </div>
+    <!-- <div id="header1">
+        <div id="menu-btn" (click)="isClicked = !isClicked">
+          <div class="btn-hamburger"></div>
+          <div class="btn-hamburger"></div>
+          <div class="btn-hamburger"></div>
+        </div>
+      
+    </div> -->
+    <div id="header1">
+      
+    </div>
+    
+  </div>
+  
+  
